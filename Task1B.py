@@ -9,11 +9,14 @@ def run():
     #Using the function in geo to get a list of stations by distance using the centre P
     listOfStationsByDistance = stations_by_distance(stations, coordinate)
 
+    closest_stations = [(station.name, station.town, distance) for (station, distance) in listOfStationsByDistance[:10]]
+    furthest_stations = [(station.name, station.town, distance) for (station, distance) in listOfStationsByDistance[-10:]]
+
     print("10 closest stations")
-    print(listOfStationsByDistance[:10])
+    print(closest_stations)
 
     print("10 furthest stations")
-    print(listOfStationsByDistance[-10:])
+    print(furthest_stations)
 
 
 
