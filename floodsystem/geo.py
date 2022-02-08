@@ -35,11 +35,9 @@ def stations_within_radius(stations, centre, r):
     stationsInRadius = []
     #finding the radius of each station from the centre
     for i in stations:
-        radius = haversine(i.coord, centre)
+        radius = haversine(i.coord, centre, unit=Unit.KILOMETERS)
     #insterting the stations with radius smaller than r in to the list
-        if radius <= r:
-            stationsInRadius.append(i.name)
+        if radius < r:
+            stationsInRadius.append(i)
 
-    sortedList2 = sorted_by_key(stationsInRadius, 0)
-
-    return(sortedList2)
+    return stationsInRadius
